@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
+import zipfile, io, requests
 
+# Retrieve AWS keys
 storage_options = {
     "key": st.secrets["AWS_ACCESS_KEY_ID"],
     "secret": st.secrets["AWS_SECRET_ACCESS_KEY"]
@@ -9,19 +11,22 @@ storage_options = {
 # Configure page
 st.set_page_config(page_title="Patent Validation", layout="wide")
 
+@st.cache_data
+def load_pg_assignee_data():
+    url = "https://s3.amazonaws.com/data.patentsview.org/pregrant_publications/pg_detail_desc_text_2001.tsv.zip"
+    response = requests.get(url)
+    z = zipfile.ZipFile(io.BytesIO(response.content))
+    filename = z.namelist()[0]
+    return pd.read_csv(z.open(filename), sep="\t", nrows=1000)
+
 @st.cache_data(max_entries=1)
 def fetch_base_data():
     """Load raw data once"""
     try:
-        descriptions = pd.read_csv("s3://patent-streamlit/pg_detail_desc_text_2001.tsv.zip",
-                                   sep='\t', compression='zip',
-                                   storage_options=storage_options)
+        descriptions = load_pg_assignee_data()
+
         crosswalk = pd.read_csv('data/crosswalk.csv')
         return descriptions, crosswalk
-    except FileNotFoundError as e:
-        st.error(f"Data files not found: {e}")
-        st.error("Please ensure 'pg_detail_desc_text_2001.tsv.zip' and 'crosswalk.csv' are in the repository root.")
-        st.stop()
     except Exception as e:
         st.error(f"Error loading data: {e}")
         st.stop()
