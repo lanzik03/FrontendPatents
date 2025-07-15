@@ -8,27 +8,34 @@ st.set_page_config(page_title="Patent Validation Tool", layout="wide")
 
 @st.cache_data(max_entries=1)
 def fetch_base_data():
-    """Load raw data once"""
+    """Load a random 25% sample of the data (excluding description_length)"""
     try:
         pf = ParquetFile('data/patents.parquet')
-        n_rows = next(pf.iter_batches(batch_size = 100)) 
-        descriptions = pa.Table.from_batches([n_rows]).to_pandas() 
-        #descriptions = pd.read_parquet('data/patents.parquet', engine='pyarrow')
+        table = pf.read()
+        df = table.to_pandas()
+
+        # Drop "description_length" if it exists
+        if "description_length" in df.columns:
+            df = df.drop(columns=["description_length"])
+
+        # Sample 25%
+        df = df.sample(frac=0.25, random_state=42)
+
         crosswalk = pd.read_csv('data/crosswalk.csv')
-        return descriptions, crosswalk
+        return df, crosswalk
     except FileNotFoundError as e:
         st.error(f"Data files not found: {e}")
-        st.error("Please ensure 'patents.parquet' and 'crosswalk.csv' are in the repository root.")
         st.stop()
     except Exception as e:
         st.error(f"Error loading data: {e}")
         st.stop()
 
+@st.cache_data
 def get_merged_data():
     """Transform data without caching (since it's fast)"""
     descriptions, crosswalk = fetch_base_data()
     data = pd.merge(descriptions, crosswalk, left_on='pgpub_id', right_on="patent_id", how="inner")
-    return data.drop(['pgpub_id', 'description_length'], axis=1)
+    return data.drop(columns=['pgpub_id'], errors='ignore')
 
 # Initialize session state for feedback storage
 if 'feedback_data' not in st.session_state:
