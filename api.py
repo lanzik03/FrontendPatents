@@ -14,7 +14,7 @@ if 'total_patents' not in st.session_state:
 if 'last_searched_year' not in st.session_state:
     st.session_state.last_searched_year = None
 
-search_year = st.text_input("Enter a year (from 1976):", key="search_year")
+search_year = st.text_input("Enter a year (explore from 1976 to 2025):", key="search_year")
 
 if search_year:
     try:
