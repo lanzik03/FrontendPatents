@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
-from pyarrow.parquet import ParquetFile
+
+storage_options = {
+    "key": st.secrets["AWS_ACCESS_KEY_ID"],
+    "secret": st.secrets["AWS_SECRET_ACCESS_KEY"]
+}
 
 # Configure page
 st.set_page_config(page_title="Patent Validation", layout="wide")
@@ -9,8 +13,8 @@ st.set_page_config(page_title="Patent Validation", layout="wide")
 def fetch_base_data():
     """Load raw data once"""
     try:
-        descriptions = pd.read_csv('data/pg_detail_desc_text_2001.tsv.zip', 
-                                 sep='\t', compression='zip', nrows=1000)
+        descriptions = pd.read_parquet("s3://patent-streamlit/pg_detail_desc_text_2001.tsv.zip",
+                                       storage_options=storage_options)
         crosswalk = pd.read_csv('data/crosswalk.csv')
         return descriptions, crosswalk
     except FileNotFoundError as e:
