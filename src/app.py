@@ -10,7 +10,7 @@ def fetch_base_data():
     """Load raw data once"""
     try:
         df = pd.read_parquet('data/patents.parquet', engine='pyarrow')
-        descriptions = df.sample(frac=0.25, random_state=42)
+        descriptions = df.sample(frac=0.10, random_state=42)
         crosswalk = pd.read_csv('data/crosswalk.csv')
         return descriptions, crosswalk
     except FileNotFoundError as e:
