@@ -1,3 +1,11 @@
+"""
+We create a Streamlit frontend to parse patent data such as title and abstract
+Data are fetched through the API from PatentsView, which supports 45 requests per minute
+This should not be an issue: a single request can retrieve as many patents as needed
+Just change the size parameter inside the query to retrieve more than 100 patents
+Nota bene: we recommend to retrieve less than 50k patents, as Streamlit allocates 1GB of RAM
+"""
+
 import streamlit as st
 import requests
 import math

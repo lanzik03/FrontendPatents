@@ -1,3 +1,4 @@
 /project
 *.streamlit/secrets.toml
 *.png
+*fetch-from-aws.py
