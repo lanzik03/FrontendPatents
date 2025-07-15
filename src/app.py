@@ -11,7 +11,7 @@ def fetch_base_data():
     """Load raw data once"""
     try:
         pf = ParquetFile('data/patents.parquet')
-        n_rows = next(pf.iter_batches(batch_size = 1000)) 
+        n_rows = next(pf.iter_batches(batch_size = 100)) 
         descriptions = pa.Table.from_batches([n_rows]).to_pandas() 
         #descriptions = pd.read_parquet('data/patents.parquet', engine='pyarrow')
         crosswalk = pd.read_csv('data/crosswalk.csv')
