@@ -1,30 +1,21 @@
 import streamlit as st
 import pandas as pd
 from pyarrow.parquet import ParquetFile
-import pyarrow as pa
 
 # Configure page
-st.set_page_config(page_title="Patent Validation Tool", layout="wide")
+st.set_page_config(page_title="Patent Validation", layout="wide")
 
-@st.cache_data(ttl=1*3600)
+@st.cache_data(max_entries=1)
 def fetch_base_data():
-    """Load a random 25% sample of the data (excluding description_length)"""
+    """Load raw data once"""
     try:
-        pf = ParquetFile('data/patents.parquet')
-        table = pf.read()
-        df = table.to_pandas()
-
-        # Drop "description_length" if it exists
-        if "description_length" in df.columns:
-            df = df.drop(columns=["description_length"])
-
-        # Sample 25%
-        df = df.sample(frac=0.25, random_state=42)
-
+        descriptions = pd.read_csv('data/pg_detail_desc_text_2001.tsv.zip', 
+                                 sep='\t', compression='zip', nrows=1000)
         crosswalk = pd.read_csv('data/crosswalk.csv')
-        return df, crosswalk
+        return descriptions, crosswalk
     except FileNotFoundError as e:
         st.error(f"Data files not found: {e}")
+        st.error("Please ensure 'pg_detail_desc_text_2001.tsv.zip' and 'crosswalk.csv' are in the repository root.")
         st.stop()
     except Exception as e:
         st.error(f"Error loading data: {e}")

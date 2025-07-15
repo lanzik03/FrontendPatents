@@ -1,2 +1,3 @@
 /project
+*.streamlit/secrets.toml
 *.png
