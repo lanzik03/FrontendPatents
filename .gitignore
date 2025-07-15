@@ -1,5 +1,6 @@
 /project
 /refresh
+/paper
 *.streamlit/secrets.toml
 *.png
 *fetch-from-aws.py
