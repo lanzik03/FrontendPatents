@@ -13,8 +13,9 @@ st.set_page_config(page_title="Patent Validation", layout="wide")
 def fetch_base_data():
     """Load raw data once"""
     try:
-        descriptions = pd.read_parquet("s3://patent-streamlit/pg_detail_desc_text_2001.tsv.zip",
-                                       storage_options=storage_options)
+        descriptions = pd.read_csv("s3://patent-streamlit/pg_detail_desc_text_2001.tsv.zip",
+                                   sep='\t', compression='zip',
+                                   storage_options=storage_options)
         crosswalk = pd.read_csv('data/crosswalk.csv')
         return descriptions, crosswalk
     except FileNotFoundError as e:
