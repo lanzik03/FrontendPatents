@@ -6,7 +6,7 @@ import pyarrow as pa
 # Configure page
 st.set_page_config(page_title="Patent Validation Tool", layout="wide")
 
-@st.cache_data(max_entries=1)
+@st.cache_data(ttl=1*3600)
 def fetch_base_data():
     """Load a random 25% sample of the data (excluding description_length)"""
     try:
@@ -30,7 +30,6 @@ def fetch_base_data():
         st.error(f"Error loading data: {e}")
         st.stop()
 
-@st.cache_data
 def get_merged_data():
     """Transform data without caching (since it's fast)"""
     descriptions, crosswalk = fetch_base_data()
