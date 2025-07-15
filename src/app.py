@@ -9,7 +9,8 @@ st.set_page_config(page_title="Patent Validation Tool", layout="wide")
 def fetch_base_data():
     """Load raw data once"""
     try:
-        descriptions = pd.read_parquet('data/patents.parquet', engine='pyarrow')
+        df = pd.read_parquet('data/patents.parquet', engine='pyarrow')
+        descriptions = df.sample(frac=0.25, random_state=42)
         crosswalk = pd.read_csv('data/crosswalk.csv')
         return descriptions, crosswalk
     except FileNotFoundError as e:
