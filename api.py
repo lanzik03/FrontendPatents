@@ -44,7 +44,7 @@ if search_year:
         payload = {
             "q": {"patent_year": year},
             "f": ["patent_id", "patent_title", "patent_abstract"],
-            "o": {"size": 100}
+            "o": {"size": 50}
         }
         
         response = requests.post(url, json=payload, headers=headers)
