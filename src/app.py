@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import os
+from pyarrow.parquet import ParquetFile
+import pyarrow as pa
 
 # Configure page
 st.set_page_config(page_title="Patent Validation Tool", layout="wide")
@@ -9,8 +10,10 @@ st.set_page_config(page_title="Patent Validation Tool", layout="wide")
 def fetch_base_data():
     """Load raw data once"""
     try:
-        df = pd.read_parquet('data/patents.parquet', engine='pyarrow')
-        descriptions = df.sample(frac=0.10, random_state=42)
+        pf = ParquetFile('data/patents.parquet')
+        n_rows = next(pf.iter_batches(batch_size = 1000)) 
+        descriptions = pa.Table.from_batches([n_rows]).to_pandas() 
+        #descriptions = pd.read_parquet('data/patents.parquet', engine='pyarrow')
         crosswalk = pd.read_csv('data/crosswalk.csv')
         return descriptions, crosswalk
     except FileNotFoundError as e:
