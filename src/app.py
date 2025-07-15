@@ -14,7 +14,7 @@ def fetch_base_data():
         return descriptions, crosswalk
     except FileNotFoundError as e:
         st.error(f"Data files not found: {e}")
-        st.error("Please ensure 'pg_detail_desc_text_2001.tsv.zip' and 'crosswalk.csv' are in the repository root.")
+        st.error("Please ensure 'patents.parquet' and 'crosswalk.csv' are in the repository root.")
         st.stop()
     except Exception as e:
         st.error(f"Error loading data: {e}")
