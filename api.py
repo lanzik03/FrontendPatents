@@ -43,7 +43,7 @@ if search_year:
         }
         payload = {
             "q": {"patent_year": year},
-            "f": ["patent_id", "patent_title", "patent_abstract", "claim_text"],
+            "f": ["patent_id", "patent_title", "patent_abstract"],
             "o": {"size": 100}
         }
         
@@ -104,7 +104,6 @@ if st.session_state.patents_data:
         st.markdown(f"### [{p.get('patent_title','N/A')}]({google_patent_url})")
         st.write(f"**Patent ID:** {patent_id}")
         st.write(f"**Abstract:** {p.get('patent_abstract','N/A')}")
-        st.write(f"**Claim:** {p.get('claim_text','N/A')}")
         st.markdown("---")
     
     # Page navigation at bottom
