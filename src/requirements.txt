@@ -1,3 +1,5 @@
 streamlit
 pandas
 pyarrow
+s3fs
+st-files-connection
