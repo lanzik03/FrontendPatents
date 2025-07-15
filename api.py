@@ -2,8 +2,6 @@ import streamlit as st
 import requests
 import math
 
-st.set_page_config(page_title="Patent Validation", layout="wide")
-
 st.title("Patent Search via PatentsView API")
 
 # Initialize session state for pagination
