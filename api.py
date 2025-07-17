@@ -56,7 +56,7 @@ if search_year:
             if pats:
                 st.session_state.patents_data = pats
                 st.session_state.total_patents = len(pats)
-                st.success(f"Found {len(pats)} patents for year {year}")
+                st.success(f"Retrieved {len(pats)} patents for year {year}")
             else:
                 st.warning("No patents found for that year.")
                 st.session_state.patents_data = []

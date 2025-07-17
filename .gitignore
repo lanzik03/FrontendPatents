@@ -1,4 +1,4 @@
-/project
+/.venv
 /refresh
 /paper
 *.streamlit/secrets.toml
