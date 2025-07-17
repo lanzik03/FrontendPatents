@@ -1,6 +1,6 @@
 /.venv
 /refresh
-/paper
+*paper
 *.streamlit/secrets.toml
 *.png
 *fetch-from-aws.py
