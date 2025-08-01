@@ -1,5 +1,6 @@
 /.venv
 /refresh
+/experiments
 *paper
 *.streamlit/secrets.toml
 *.png
