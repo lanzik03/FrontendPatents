@@ -1,7 +1,4 @@
 /.venv
-/refresh
-/experiments
-*paper
 *.streamlit/secrets.toml
 *.png
 *fetch-from-aws.py

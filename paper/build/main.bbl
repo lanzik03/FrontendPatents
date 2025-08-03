@@ -1,0 +1,78 @@
+\begin{thebibliography}{10}
+
+\bibitem{aslanyan2022patents}
+G.~Aslanyan and I.~Wetherbee.
+\newblock Patents phrase to phrase semantic matching dataset.
+\newblock {\em arXiv preprint arXiv:2208.01171}, 2022.
+
+\bibitem{bekamiri2024patentsberta}
+H.~Bekamiri, D.~S. Hain, and R.~Jurowetzki.
+\newblock Patent{SBERT}a: A deep {NLP} based hybrid model for patent distance and classification using augmented {SBERT}.
+\newblock {\em Technological Forecasting and Social Change}, 206:123536, 2024.
+
+\bibitem{JRC126541}
+F.~Cariaggi, C.~De~Nobili, and S.~Bratières.
+\newblock Patents for industrial pollution prevention and control.
+\newblock Technical Report JRC126541, Publications Office of the European Union, 2021.
+
+\bibitem{dhulipala2024muvera}
+L.~Dhulipala, M.~Hadian, R.~Jayaram, J.~Lee, and V.~Mirrokni.
+\newblock {MUVERA}: Multi-vector retrieval via fixed dimensional encodings.
+\newblock {\em arXiv preprint arXiv:2405.19504}, 2024.
+
+\bibitem{haghighian2022patentnet}
+A.~Haghighian~Roudsari, J.~Afshar, W.~Lee, and S.~Lee.
+\newblock Patent{N}et: multi-label classification of patent documents using deep learning based language understanding.
+\newblock {\em Scientometrics}, 127(1):207--231, 2022.
+
+\bibitem{khattab2020colbert}
+O.~Khattab and M.~Zaharia.
+\newblock Col{BERT}: Efficient and effective passage search via contextualized late interaction over {BERT}.
+\newblock In {\em Proceedings of the 43rd International ACM SIGIR conference on research and development in Information Retrieval}, pages 39--48, 2020.
+
+\bibitem{lee2020patent}
+J.-S. Lee and J.~Hsiang.
+\newblock Patent classification by fine-tuning {BERT} language model.
+\newblock {\em World Patent Information}, 61:101965, 2020.
+
+\bibitem{li2018deeppatent}
+S.~Li, J.~Hu, Y.~Cui, and J.~Hu.
+\newblock Deep{P}atent: patent classification with convolutional neural networks and word embedding.
+\newblock {\em Scientometrics}, 117(2):721--744, 2018.
+
+\bibitem{lybbert2014getting}
+T.~J. Lybbert and N.~J. Zolas.
+\newblock Getting patents and economic data to speak to each other: An ‘algorithmic links with probabilities’ approach for joint analyses of patenting and economic activity.
+\newblock {\em Research Policy}, 43(3):530--542, 2014.
+
+\bibitem{nguyen2022cinpatent}
+M.-T. Nguyen, N.~Bui, M.~Tran-Tien, L.~Le, and H.-T. Vu.
+\newblock Cin{P}atent: Datasets for patent classification.
+\newblock {\em arXiv preprint arXiv:2212.12192}, 2022.
+
+\bibitem{sharma2019bigpatent}
+E.~Sharma, C.~Li, and L.~Wang.
+\newblock {BIGPATENT}: A large-scale dataset for abstractive and coherent summarization.
+\newblock {\em arXiv preprint arXiv:1906.03741}, 2019.
+
+\bibitem{tran2017supervised}
+T.~Tran and R.~Kavuluru.
+\newblock Supervised approaches to assign {C}ooperative {P}atent {C}lassification ({CPC}) codes to patents.
+\newblock In {\em International conference on mining intelligence and knowledge exploration}, pages 22--34. Springer, 2017.
+
+\bibitem{yamada2020wikipedia2vec}
+I.~Yamada, A.~Asai, J.~Sakuma, H.~Shindo, H.~Takeda, Y.~Takefuji, and Y.~Matsumoto.
+\newblock {W}ikipedia2{V}ec: An efficient toolkit for learning and visualizing the embeddings of words and entities from {W}ikipedia.
+\newblock In {\em Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations}, pages 23--30. Association for Computational Linguistics, 2020.
+
+\bibitem{yamada2019neural}
+I.~Yamada and H.~Shindo.
+\newblock Neural attentive bag-of-entities model for text classification.
+\newblock {\em arXiv preprint arXiv:1909.01259}, 2019.
+
+\bibitem{zaheer2020big}
+M.~Zaheer, G.~Guruganesh, K.~A. Dubey, J.~Ainslie, C.~Alberti, S.~Ontanon, P.~Pham, A.~Ravula, Q.~Wang, L.~Yang, et~al.
+\newblock Big bird: Transformers for longer sequences.
+\newblock {\em Advances in neural information processing systems}, 33:17283--17297, 2020.
+
+\end{thebibliography}
